@@ -1,8 +1,14 @@
 # Chrome Extension Analyzer Agent Flow
 
-This project demonstrates a multi-agent workflow using Azure OpenAI's ChatCompletions API. It features a set of specialized agents that analyze Chrome Extensions and help prepare them for submission to the Chrome Web Store.
+This project demonstrates a multi-agent workflow using Azure OpenAI's ChatCompletions API that can analyze Chrome Extensions directly from their GitHub repositories. Simply provide a GitHub URL, and the system will automatically extract, analyze, and prepare your extension for the Chrome Web Store - no local files needed!
 
 ## Features
+
+### Seamless GitHub Integration
+- **Zero Local Setup**: Analyze any Chrome Extension directly from its GitHub repository - no cloning required
+- **Smart File Detection**: Automatically finds and parses key files like manifest.json, README.md, and privacy policies
+- **Deep Repository Analysis**: Examines repository metadata, stars, issues, and update frequency to assess project health
+- **Comprehensive Dependency Analysis**: Automatically detects and analyzes package.json dependencies
 
 ### Chrome Extension Analysis
 - Analyzes Chrome Extensions directly from GitHub repositories
@@ -20,7 +26,6 @@ This project demonstrates a multi-agent workflow using Azure OpenAI's ChatComple
 - **Azure OpenAI Service**: Provides access to powerful language models via Azure's cloud platform
 - **Azure AI Inference**: Python SDK for interacting with Azure OpenAI models
 - **PyGithub**: For GitHub repository analysis
-- **dotenv**: Loads environment variables from a `.env` file
 
 ## Requirements
 - Python 3.8+
