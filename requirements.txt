@@ -1,0 +1,8 @@
+langchain
+openai
+azure-ai-inference
+python-dotenv
+pytest
+pytest-mock
+requests
+PyGithub
