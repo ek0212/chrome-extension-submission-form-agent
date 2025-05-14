@@ -1,6 +1,6 @@
-# Semantic Kernel Python LangChain Agent Flow
+# Chrome Extension Analyzer Agent Flow
 
-This project demonstrates a two-step agent flow using Azure OpenAI's ChatCompletions API. It features a set of agents that analyze Chrome Extensions and help prepare them for submission to the Chrome Web Store.
+This project demonstrates a multi-agent workflow using Azure OpenAI's ChatCompletions API. It features a set of specialized agents that analyze Chrome Extensions and help prepare them for submission to the Chrome Web Store.
 
 ## Features
 
@@ -18,7 +18,7 @@ This project demonstrates a two-step agent flow using Azure OpenAI's ChatComplet
 
 ## Tools and Frameworks Used
 - **Azure OpenAI Service**: Provides access to powerful language models via Azure's cloud platform
-- **azure-ai-inference**: Python SDK for interacting with Azure AI models
+- **Azure AI Inference**: Python SDK for interacting with Azure OpenAI models
 - **PyGithub**: For GitHub repository analysis
 - **dotenv**: Loads environment variables from a `.env` file
 
