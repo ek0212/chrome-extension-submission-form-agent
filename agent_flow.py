@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 import logging
 import re
 from github import Github
-import requests
 import json
 import base64
 
@@ -147,7 +146,7 @@ def analyze_github_repo(repo_url: str) -> str:
         # Get manifest.json content
         manifest_content = get_file_content_safe(repo, "manifest.json")
         if not manifest_content:
-            return "Error: manifest.json not found or invalid"
+            return json.dumps({"error": "manifest.json not found or invalid"})
         
         manifest_data = json.loads(manifest_content)
         
@@ -204,7 +203,7 @@ def analyze_github_repo(repo_url: str) -> str:
 
     except Exception as e:
         logger.error(f"Error analyzing GitHub repository: {e}")
-        return f"Error analyzing repository: {str(e)}"
+        return json.dumps({"error": str(e)})
 
 def agent_tool(agent_prompt: str, user_input: str) -> str:
     messages = [
@@ -224,20 +223,28 @@ def agent_tool(agent_prompt: str, user_input: str) -> str:
         return f"Error: {error}"
 
 def run_agentic_flow(extension_context: str):
-    logger.info("Starting Store Listing Agent...")
-    store_listing_output = agent_tool(STORE_LISTING_PROMPT, extension_context)
-    print("\n=== Store Listing Agent Output ===\n")
-    print(store_listing_output)
+    try:
+        context = json.loads(extension_context)
+        if "error" in context:
+            print(f"\nError in repository analysis: {context['error']}")
+            return
+            
+        logger.info("Starting Store Listing Agent...")
+        store_listing_output = agent_tool(STORE_LISTING_PROMPT, json.dumps(context))
+        print("\n=== Store Listing Agent Output ===\n")
+        print(store_listing_output)
 
-    logger.info("Starting Privacy Practices Agent...")
-    privacy_practices_output = agent_tool(PRIVACY_PRACTICES_PROMPT, extension_context)
-    print("\n=== Privacy Practices Agent Output ===\n")
-    print(privacy_practices_output)
+        logger.info("Starting Privacy Practices Agent...")
+        privacy_practices_output = agent_tool(PRIVACY_PRACTICES_PROMPT, json.dumps(context))
+        print("\n=== Privacy Practices Agent Output ===\n")
+        print(privacy_practices_output)
 
-    logger.info("Starting Distribution Agent...")
-    distribution_output = agent_tool(DISTRIBUTION_PROMPT, extension_context)
-    print("\n=== Distribution Agent Output ===\n")
-    print(distribution_output)
+        logger.info("Starting Distribution Agent...")
+        distribution_output = agent_tool(DISTRIBUTION_PROMPT, json.dumps(context))
+        print("\n=== Distribution Agent Output ===\n")
+        print(distribution_output)
+    except json.JSONDecodeError:
+        print(f"\nError: Invalid JSON response from repository analysis")
 
 if __name__ == "__main__":
     repo_url = input("Enter the GitHub repository URL of your Chrome Extension: ")

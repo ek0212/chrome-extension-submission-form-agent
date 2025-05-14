@@ -44,7 +44,7 @@ This project demonstrates a two-step agent flow using Azure OpenAI's ChatComplet
 ## Usage
 Run the main script and provide a GitHub repository URL when prompted:
 ```bash
-python langchain_flow.py
+python agent_flow.py
 ```
 
 The script will:
