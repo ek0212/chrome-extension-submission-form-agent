@@ -66,3 +66,64 @@ The script will:
 5. Provide submission-ready content for all Chrome Web Store form fields
 
 This automated process saves hours of manual form filling and ensures all Chrome Web Store requirements are met. Simply copy the generated content into the corresponding store submission forms.
+
+## Example
+
+Here's an example of analyzing a simple Chrome extension that adds dark mode to websites:
+
+```bash
+$ python agent_flow.py
+Enter GitHub repository URL: https://github.com/example/dark-mode-extension
+
+Analyzing repository...
+✓ Repository analysis complete
+✓ Manifest.json validated
+✓ Dependencies analyzed
+✓ Privacy implications reviewed
+
+Generated Extension Data (JSON):
+------------------------
+{
+    "store_listing": {
+        "name": "Dark Mode Pro",
+        "short_description": "Transform any website into a comfortable dark theme with one click.",
+        "detailed_description": "Dark Mode Pro intelligently converts websites to dark mode while preserving readability and design integrity. Perfect for night-time browsing and reducing eye strain.",
+        "category": "Accessibility"
+    },
+    "privacy": {
+        "permissions": {
+            "activeTab": {
+                "justification": "Required to modify current webpage's styling",
+                "data_access": "DOM elements and styles only",
+                "data_retention": "None - modifications are temporary"
+            }
+        },
+        "data_collection": null,
+        "external_apis": [],
+        "storage": {
+            "type": "local",
+            "purpose": "User preferences only",
+            "data_stored": ["theme_settings", "enabled_status"]
+        }
+    },
+    "distribution": {
+        "visibility": "Public",
+        "target_regions": "*",
+        "pricing": {
+            "model": "Free",
+            "trial_period": null
+        },
+        "update_frequency": "As needed"
+    }
+
+All required fields have been generated and are ready to copy into the Chrome Web Store submission form.
+```
+
+This example shows how the tool:
+1. Analyzes a Chrome extension repository
+2. Generates appropriate store listing content
+3. Creates privacy documentation based on the extension's permissions
+4. Recommends distribution settings
+5. Provides submission-ready content formatted for the Chrome Web Store
+
+The generated content can be directly copied into the Chrome Web Store Developer Dashboard for submission.
