@@ -1,8 +1,14 @@
-# Chrome Extension Analyzer Agent Flow
+# Agentic Flow to Fill Out Chrome Extension Submission Forms
 
-This project demonstrates a multi-agent workflow using Azure OpenAI's ChatCompletions API that can analyze Chrome Extensions directly from their GitHub repositories. Simply provide a GitHub URL, and the system will automatically extract, analyze, and prepare your extension for the Chrome Web Store - no local files needed!
+This project demonstrates a multi-agent workflow using Azure OpenAI's ChatCompletions API that can analyze Chrome Extensions directly from their GitHub repositories and supply the requisite fields to get submission approval in the Chrome Web Store. 
 
 ## Features
+
+### Automated Form Submission Preparation
+- **Complete Store Listing**: Automatically generates all required store listing fields
+- **Privacy Documentation**: Creates privacy-related documentation and justifications
+- **Distribution Setup**: Determines optimal distribution settings based on extension analysis
+- **Submission Readiness**: Helps fill all Chrome Web Store requirements before submission
 
 ### Seamless GitHub Integration
 - **Zero Local Setup**: Analyze any Chrome Extension directly from its GitHub repository - no cloning required
@@ -18,9 +24,9 @@ This project demonstrates a multi-agent workflow using Azure OpenAI's ChatComple
 - Analyzes dependencies and code structure
 
 ### Multi-Agent Workflow
-- **Store Listing Agent**: Handles all fields in the Chrome Web Store 'Store Listing' tab
-- **Privacy Practices Agent**: Reviews privacy implications and required permissions
-- **Distribution Agent**: Assesses distribution readiness and visibility options
+- **Store Listing Agent**: Crafts compelling store listings with accurate descriptions, categories, and metadata
+- **Privacy Practices Agent**: Generates comprehensive privacy documentation and permission justifications
+- **Distribution Agent**: Recommends optimal visibility settings and distribution strategy
 
 ## Tools and Frameworks Used
 - **Azure OpenAI Service**: Provides access to powerful language models via Azure's cloud platform
@@ -53,14 +59,10 @@ python agent_flow.py
 ```
 
 The script will:
-1. Analyze the GitHub repository
-2. Extract extension information
-3. Generate store listing details
-4. Review privacy practices
-5. Assess distribution readiness
+1. Analyze the GitHub repository and extract extension details
+2. Generate a complete store listing with compelling descriptions
+3. Create detailed privacy documentation and permission justifications
+4. Recommend optimal distribution settings
+5. Provide submission-ready content for all Chrome Web Store form fields
 
-## Running Tests
-To run the test suite:
-```bash
-pytest
-```
+This automated process saves hours of manual form filling and ensures all Chrome Web Store requirements are met. Simply copy the generated content into the corresponding store submission forms.
